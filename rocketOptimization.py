@@ -5,7 +5,6 @@
 import math
 
 idealDesign = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-
 oxidizerToFuelRatio = 2.5
 
 #kg
@@ -13,7 +12,6 @@ engineMass = 15.0
 payload = 10.0
 dryMass = 0.0
 wetMass = 0.0
-
 #s
 specificImpulse = 250.0
 burnTime = 0.0
@@ -78,28 +76,15 @@ while rocketRadius < 0.31:
         rocketHeight += 0.00001
     rocketRadius += 0.00001
     rocketHeight = rocketRadius * 4.001
-    
-print(idealDesign[0])
-print(idealDesign[1])
-print(idealDesign[2])
-print(idealDesign[3])
-print(idealDesign[4])
-print(idealDesign[5])
-    
-    
-print(" Hello ")
 
-finalMass(idealDesign[0], idealDesign[1])
-print(dryMass)
-initialMass(dryMass, idealDesign[0], idealDesign[1])
-print(wetMass)
-calculateBurnTime(wetMass, dryMass)
-print(burnTime)
-print(calculatedeltaV(wetMass, dryMass, burnTime))
+print("Ideal rocket radius in meters is: " + str(idealDesign[0]))
+print("Ideal rocket height in meters is: " + str(idealDesign[1]))
+print("Maximum Delta V in m/s is: " + str(idealDesign[2]))
+print("The initial mass of this rocket in kg is: " + str(idealDesign[4]))
+print("The final mass of this rocket in kg is: " + str(idealDesign[5]))
 
+#Equation from reference 1
 maxHeight = (-9.81*idealDesign[3]/2)+(((9.81*specificImpulse*idealDesign[3]*dryMass)/(wetMass-dryMass))*math.log(dryMass/wetMass))+(9.81*specificImpulse*idealDesign[3])+((deltaV ** 2)/(9.81*2))
-print(maxHeight)
+print("Maximum altitude reached in meters is: " + str(maxHeight))
 flightTime = idealDesign[3]+(idealDesign[2]/9.81)
-print(flightTime)
-
-
+print("Flight time in seconds is: " + str(flightTime))
