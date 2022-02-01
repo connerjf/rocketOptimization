@@ -1,9 +1,7 @@
-'''
-Project Name: Rocket Simulation
-Author: Conner Fransoo
-Date: January 30th, 2022
+#Project Name: Rocket Simulation
+#Author: Conner Fransoo
+#Date: January 30th, 2022
 
-'''
 import math
 
 idealDesign = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -71,15 +69,14 @@ while rocketRadius < 0.31:
         calculateBurnTime(wetMass, dryMass)
         calculatedeltaV(wetMass, dryMass, burnTime)
         if deltaV > idealDesign[2]:
-            print(deltaV)
             idealDesign[0] = rocketRadius
             idealDesign[1] = rocketHeight
             idealDesign[2] = deltaV
             idealDesign[3] = burnTime
             idealDesign[4] = wetMass
             idealDesign[5] = dryMass
-        rocketHeight += 0.0001
-    rocketRadius += 0.0001
+        rocketHeight += 0.00001
+    rocketRadius += 0.00001
     rocketHeight = rocketRadius * 4.001
     
 print(idealDesign[0])
@@ -100,11 +97,9 @@ calculateBurnTime(wetMass, dryMass)
 print(burnTime)
 print(calculatedeltaV(wetMass, dryMass, burnTime))
 
-
-
-
-
-
-
+maxHeight = (-9.81*idealDesign[3]/2)+(((9.81*specificImpulse*idealDesign[3]*dryMass)/(wetMass-dryMass))*math.log(dryMass/wetMass))+(9.81*specificImpulse*idealDesign[3])+((deltaV ** 2)/(9.81*2))
+print(maxHeight)
+flightTime = idealDesign[3]+(idealDesign[2]/9.81)
+print(flightTime)
 
 
